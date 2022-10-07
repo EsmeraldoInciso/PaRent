@@ -1,0 +1,37 @@
+<%- include('partials/head') %> 
+<body>
+    <!-- <div class="header">
+        <a href="home" class="logo">PaRenta </a>
+        <div class="header-right">
+            <a class="active" href="login">Login</a>
+            <a href="sign-up">Sign-up</a>
+        </div>
+    </div> -->
+    <%- include('partials/navbar') %>
+    <br><br><br><br>
+    <div class="container" style="z-index: 1;">
+        <h1>All Listings</h1>
+        <div class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
+            <% for(let i  = 0; i< listings.length ; i++){ %> 
+            <div class="col">
+                <div class="card" style="width: auto;">
+                    <div class="card-body">
+                        <img src="bg.jpg" class="card-img-top" alt="...">
+                      <h3 class="card-title"><%= listings[i].listingName %> </h3>
+                      <p class="card-text"><strong>Posted by:</strong> <%= listings[i].postedBy %></p>
+                      <p class="card-text"><strong>Description:</strong> <%= listings[i].description %></p>
+                      <p class="card-text"><strong>Address:</strong> <%= listings[i].address %></p>
+                      <a href="listings/<%= listings[i].id %> " class="btn btn-success form-control">View Details</a>
+                    </div>
+                  </div>
+                  <br>
+            </div>
+            <% } %> 
+            
+        </div>
+        
+    </div>
+    <br><br><br><br>
+    <%- include('partials/footer') %> 
+</body>
+</html>

@@ -1,0 +1,28 @@
+<%- include('partials/head') %> 
+<body>
+    <%- include('partials/navbar') %>
+    <br><br><br><br>
+    <div class="container" style="z-index: 1;">
+        <div class="card" style="width: auto;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="/bg.jpg" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h1 class="card-title"><%= listing.listingName %> </h1>
+                        <p class="card-text"><strong>Posted by:</strong> <%= listing.postedBy %></p>
+                        <p class="card-text"><strong>Description:</strong> <%= listing.description %></p>
+                        <p class="card-text"><strong>Address:</strong> <%= listing.address %></p>
+                      </div>
+                </div>
+              </div>
+        </div>
+        
+          <br>
+        <h3>Reviews:</h3>
+    </div>
+    <br><br><br><br>
+    <%- include('partials/footer') %>
+</body>
+</html>
