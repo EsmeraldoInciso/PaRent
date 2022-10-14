@@ -6,46 +6,33 @@
           <div class="row">
             <div class=""></div>
             <div class="col-lg-12">
-
               <div class="card" style="width: 25rem;">
                 <div class="card-body">
-                  <form action="/login" method="post">
+                  <form action="/accounts/login" method="post">
                     <div class="text-center">
                         <h1>PaRenta Login</h1>
                     </div>
                     <br>
-                    <!-- Email input -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="username">Username</label>
-                      <input type="text" id="username" class="form-control" placeholder="Enter Your Username..."/>
-                      
+                      <input type="text" name="username" id="username" class="form-control" placeholder="Enter Your Username..."/>
                     </div>
-                  
-                    <!-- Password input -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="password">Password</label>
-                      <input type="password" id="password" class="form-control" placeholder="Enter Your Password..."/>
-                      
+                      <input type="password" name="password" id="password" class="form-control" placeholder="Enter Your Password..."/>
                     </div>
-                  
-                  
-                    <!-- Submit button -->
-                    <button type="button" class="btn btn-primary btn-block mb-4 form-control">Login</button>
-                  
-                    <!-- Register buttons -->
+                    <button class="btn btn-primary btn-block mb-4 form-control">Login</button>
                     <div class="text-center">
                       <p>Not a member? <a href="/accounts/sign-up">Sign-up</a></p>
                     </div>
                   </form>
                 </div>
               </div>
-                
             </div>
             <div class=""></div>
         </div>
         </div>
     </div>
-    
     <%- include('partials/footer') %>
 </body>
 </html>

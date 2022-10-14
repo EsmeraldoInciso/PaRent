@@ -13,15 +13,66 @@
                         <h1 class="card-title"><%= listing.listingName %> </h1>
                         <p class="card-text"><strong>Posted by:</strong> <%= listing.postedBy %></p>
                         <p class="card-text"><strong>Description:</strong> <%= listing.description %></p>
-                        <p class="card-text"><strong>Address:</strong> <%= listing.address %></p>
+                        <p class="card-text" id="address"><strong>Address:</strong> <%= listing.address %></p>
+                        <p class="card-text"><strong>Date Posted:</strong> <%= listing.date %></p>
                       </div>
                 </div>
               </div>
         </div>
-        
+        <div id="lat" data-test=<%=latlng.lat%>></div>
+        <div id="lng" data-test=<%=latlng.lng%>></div>
           <br>
         <h3>Reviews:</h3>
+        <div class="container">
+          <% if(accountID && listing.postedBy!= accountID.username){ %> 
+            <form action="/profile/listings/<%=listing._id%>/add-review?_method=PATCH" method="post">
+              <div class="row">
+                <div class="col">
+                  <input type="text" name="review" id="review" class="form-control" placeholder="Add Your Review..."/>
+                </div>
+                <div class="col">
+                  <button class="btn btn-primary btn-block mb-4">Add Review</button>
+                </div>
+              </div>
+            </form>
+          <% } %> 
+          <% for(let i = 0; i < listing.reviews.length; i++){ %> 
+            <h5>-<strong><%= listing.reviews[i].by %> </strong>: <%= listing.reviews[i].review %> </h5>
+          <% } %> 
+          <% if(listing.reviews.length <=0){ %> 
+            <div class="row">
+              <div class="col"></div>
+              <div class="col">
+                <h5 class="text-center">No Reviews</h5>
+              </div>
+              <div class="col"></div>
+            </div>
+          <% } %> 
+        </div>
     </div>
+    <br><br><br>
+    <div class="container">
+      <h3>Location:</h3>
+    <div id="map" style="width: 100%; height: 400px; background-color: gray;"></div>
+    </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPXqouTKm8d1pMw3BU9mhNpExVQufFKp4&callback=initMap&v=weekly"></script>
+    <script>
+      var latitude = document.getElementById('lat').dataset.test;
+      var longitude = document.getElementById('lng').dataset.test;
+      function initMap() {
+        const latlng = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 17,
+          center: latlng,
+        });
+        const marker = new google.maps.Marker({
+          position: latlng,
+          map: map,
+        });
+      }
+      window.initMap = initMap;
+    </script>
+    <!-- AIzaSyBPXqouTKm8d1pMw3BU9mhNpExVQufFKp4 -->
     <br><br><br><br>
     <%- include('partials/footer') %>
 </body>

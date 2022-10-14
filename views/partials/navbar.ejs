@@ -9,20 +9,24 @@
           <li class="nav-item">
             <a class="nav-link active text-light" aria-current="page" href="/">Home</a>
           </li>
+          <% if(accountID){ %> 
+          <div class="vr text-light"></div>
+
+            <li class="nav-item">
+              <a class="nav-link active text-light" aria-current="page" href="/profile"><%=accountID.username%>'s Profile</a>
+            </li>
+            
+            <li class="nav-item">
+              <form action="/accounts/logout" method="post">
+                <input type="submit" class="nav-link active text-dark" value="Logout" />
+              </form>
+            </li>
+          <% } else{ %> 
           <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="/profile">My Profile</a>
+            <a class="nav-link active text-light bg-dark" aria-current="page" href="/accounts/login">Login</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="/accounts/login">Login</a>
-          </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="sign-up">Sign-up</a>
-          </li> -->
+          <% } %> 
         </ul>
-        <!-- <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form> -->
       </div>
     </div>
   </nav>
